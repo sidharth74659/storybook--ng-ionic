@@ -37,3 +37,27 @@ You need to manually update your `.storybook/tsconfig.json` to correctly inclu
 }
 ```
 
+---
+
+**Error**:
+
+```
+Parsing error: ESLint was configured to run on `<tsconfigRootDir>/src/app/tab1/product-card/product-card.component.ts` using `parserOptions.project`: /users/srikanthvudharapu/desktop/project-one/2.storybook/storybook--ng-ionic/myapp/tsconfig.json
+However, that TSConfig does not include this file. Either:
+- Change ESLint's list of included files to not include this file
+- Change that TSConfig to include this file
+- Create a new TSConfig that includes this file and include it in your parserOptions.project
+See the typescript-eslint docs for more info: https://typescript-eslint.io/linting/troubleshooting#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-fileeslint
+```
+
+**Solution**:
+- In your `tsconfig.json` file, add `"**/*.ts"` to the `include` array.
+```js
+{
+    "include": [
+        "**/*.ts" // includes *.interface.ts, *.component.ts, ...
+    ]
+}
+```
+- This tells TypeScript to include all `.ts` files in the current directory and its subdirectories. If your TypeScript files are in a different directory, adjust the path accordingly.
+

@@ -13,5 +13,10 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+
+  <div class="product-cards">
+    <app-product-card *ngFor="let product of products" [product]="product"
+      (onOpen)="openProduct($event)"></app-product-card>
+  </div>
 </ion-content>
